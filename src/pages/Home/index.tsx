@@ -1,4 +1,3 @@
-import React from "react";
 import "./style.css";
 import { Tabs } from "antd-mobile";
 import useTabs from "@/hooks/useTabs";
