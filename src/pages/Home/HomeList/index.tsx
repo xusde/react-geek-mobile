@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { Image, InfiniteScroll, List } from "antd-mobile";
 import { articles, type ArticlesType } from "@/apis/articles";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   channel_id: string;
 };
 
 const HomeList = (props: Props) => {
+  // use navigate hook
+  const navigate = useNavigate();
   // destruct channel_id from props
   const { channel_id } = props;
   const [articleList, setArticleList] = useState<ArticlesType>({
@@ -50,6 +53,7 @@ const HomeList = (props: Props) => {
       <List>
         {articleList.results.map((item) => (
           <List.Item
+            onClick={() => navigate(`/detail?id=${item.art_id}`)}
             key={item.art_id}
             prefix={
               <Image
